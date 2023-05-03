@@ -6,18 +6,19 @@
 trigger:
 - main
 
-strategy:
-  matrix:
-    linux:
-      imageName: "ubuntu-latest"
-    mac:
-      imageName: "macOS-latest"
-    windows:
-      imageName: "windows-latest"
-  maxParallel: 3
-
 pool:
-  vmImage: $(imageName)
+  vmImage: "ubuntu-latest"
+
+#
+# Run different versions of java on same platform. Use a variable to call on each rather than hard-coded values
+# 
+# strategy:
+#   matrix:
+#     jdk10:
+#       jdkVersion: "1.10"
+#     jdk11:
+#       jdkVersion: "1.11"
+#   maxParallel: 2
 
 steps:
 - task: NodeTool@0
